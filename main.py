@@ -8,6 +8,7 @@ def run_code(file: str):
         'i': 'in',
         'Rigtigt': 'True',
         'Forkert': 'False',
+        'Intet': 'None',
         'imens': 'while',
         'hvert': 'for',
         'eller': 'or',
