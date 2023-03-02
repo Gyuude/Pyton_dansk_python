@@ -16,7 +16,7 @@ def run_code(file: str):
         'fortsæt': 'continue',
         'afbryd': 'break',
         'spænd': 'range',
-        'aflever': 'return',
+        'aflevér': 'return',
         'importér': 'import',
         'ellers': 'else',
         'elvis': 'elif',
