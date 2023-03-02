@@ -1,4 +1,5 @@
 from tokenize import tokenize, untokenize
+from sys import argv
 
 
 def run_code(file: str):
@@ -75,18 +76,11 @@ def run_code(file: str):
     }
 
     with open(file, 'rb') as src:
-        tokens = []
-
-        for token in tokenize(src.readline):
-            if token.string in keys:
-                t = (token.type, keys[token.string])
-            else:
-                t = (token.type, token.string)
-
-            tokens.append(t)
+        tokens = [(token.type, keys.get(token.string, token.string)) for token in tokenize(src.readline)]
 
     code = untokenize(tokens).decode('utf-8')
     exec(code)
 
+
 if __name__ == '__main__':
-    run_code('kode.pyt')
+    run_code(argv[1])
