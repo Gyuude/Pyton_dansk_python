@@ -75,8 +75,13 @@ def run_code(file: str):
         '__fil__': '__file__'
     }
 
+    keywords = set(keys.values())
+
     with open(file, 'rb') as src:
-        tokens = [(token.type, keys.get(token.string, token.string)) for token in tokenize(src.readline)]
+        tokens = [
+            (token.type, keys.get(token.string, token.string + ("_v" if token.string in keywords else "")))
+            for token in tokenize(src.readline)
+        ]
 
     code = untokenize(tokens).decode('utf-8')
     exec(code)
